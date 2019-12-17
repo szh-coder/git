@@ -60,27 +60,27 @@ git常用命令
 * 撤销
 
   	* `git checkout <file>` : 恢复暂存区的指定文件到工作区
-  	
+  
   	* `git checkout .` : 恢复暂存区当前目录的所有文件到工作区
-  	
+  
   	* `git checkout <commit>` :恢复工作区到指定的commit
-  	
+  
   	* `git reset <commit> ` 的意思就是 把HEAD移到<commit> 就是把你现在这个branch的最新的commit移到你指定的commit
-  	
+  
   	* `git reset <file>` :重置暂存区指定文件,与上一次commit保持一致,但工作区不变
-  	
+  
   	* `git reset --hard` :重置暂存区与工作区,与上一次commit保持一致
-  	
+  
   	* `git reset --hard <commit>` :重置当前分支HEAD为指定commit,同时重置 暂存区合工作区与指定commit一致
-  	
+  
   	* `--soft` :只动repo, `--mixed` : 动repo和staging(默认参数) `--hard` : 动repo,staging,working三个地方
   	* `git reset HARD` :HARD代表当前commit
   	* `git reset HARD^` :代表上一次commit
-  	
+  
   	* `git revert <commit>` : 新建一个commit,用于撤销指定commit
-  	
+  
   	* `git stash` :将未提交的变化放在储藏区
-  	
+  
   	* `git stash pop` :将储藏区的内容恢复到当前的工作区
 * 远程仓库
 
@@ -111,6 +111,26 @@ git常用命令
   
 
 * git 基本操作 [Pro Git](https://gitee.com/progit/) 
+
+* git撤销push
+
+  `git log`
+
+  `git reset --soft <版本号>` :重置至指定版本的提交，达到撤销提交的目的
+
+  ```
+  git reset --soft 和 git reset --hard 区别
+  前者表示只改变了HEAD的指向,本地代码不会变化,使用git stash依然可以看到,同时也可以
+  git commit 提交.后者直接会改变本地源码,不仅指向变化了,代码也回到了那个版本时的代码
+  ```
+
+  `git push origin <分支名> --force` :强制提交当前版本号
+
+* git 撤销commit
+
+  `git log`
+
+  `git reset --hard <commit_id>` :该commit_id为需要撤销的commit的提交的前面的一个提交版本,即需要恢复到提交的id,重置至指定的版本提交,达到撤销提交的目的
 
 * 找回丢失的commit
 
